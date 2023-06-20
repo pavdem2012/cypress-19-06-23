@@ -1,10 +1,10 @@
-describe('Авторизация',() =>{
-    beforeEach(()=>{
+describe('Авторизация',() => {
+    beforeEach(() => {
         cy.visit('https://try.vikunja.io/login')
         cy.contains('Войти')
     })
 
-    it('Нельзя авторизоваться без пароля',()=>{
+    it('Нельзя авторизоваться без пароля', () => {
         cy.get('#username').type('demo')
         cy.get('button').contains('Войти').click()
         cy.get('.help').contains('Введите пароль')
@@ -12,7 +12,7 @@ describe('Авторизация',() =>{
 
     })
 
-    it('Нельзя авторизоваться без имени пользователя',()=>{
+    it('Нельзя авторизоваться без имени пользователя', () => {
         cy.get('#password').type('demo')
         cy.get('button').contains('Войти').click()
         cy.get('.help').contains('Введите имя пользователя')
@@ -20,36 +20,30 @@ describe('Авторизация',() =>{
 
     })
 
-    it('Успешная авторизация',()=>{
+    it('Успешная авторизация', () => {
         cy.get('#username').type('demo')
         cy.get('#password').type('demo')
-        cy.get('button').contains('Войти').click({force:true})
+        cy.get('button').contains('Войти').click({force: true})
         cy.url().should('eq', 'https://try.vikunja.io/')
 
     })
-
-    it('Успешный разлогин',()=>{
+})
+describe('Меню',() => {
+    beforeEach(() => {
+        cy.visit('https://try.vikunja.io/login')
+        cy.contains('Войти')
+    })
+    it('Переход к странице настроек и выбор локали',()=>{
         cy.get('#username').type('demo')
         cy.get('#password').type('demo')
         cy.get('.button').click()
         cy.url().should('eq', 'https://try.vikunja.io/')
         cy.get('.username').click({force:true})
-        cy.get(':nth-child(4) > span').click({force:true})
-        cy.url().should('eq', 'https://try.vikunja.io/login')
-    })
-
-    it('Вывод модального окна "О Vikunja"',()=>{
-        cy.get('#username').type('demo')
-        cy.get('#password').type('demo')
-        cy.get('.button').click()
-        cy.url().should('eq', 'https://try.vikunja.io/')
-        cy.get('.username').click({force:true})
-        cy.get('[href="/about"] > span').click({force:true})
-        cy.url().should('eq', 'https://try.vikunja.io/about')
-        cy.get('.card-header-title').should('contain',"О Vikunja")
-        cy.get('.p-4')
-            .should('contain', 'Версия фронтенда:')
-            .should('contain', 'Версия API:');
+        cy.get('[href="/user/settings"] > span').click()
+        cy.url().should('eq', 'https://try.vikunja.io/user/settings/general')
+        cy.get('div:nth-child(9) > label > div > select').select('ru-RU')
+        cy.get('[data-cy="saveGeneralSettings"]').click()
+        cy.get('.card-header-title').should('contain', "Основные настройки")
     })
 
     it('Вывод модального окна "Сочетания клавиш"',()=>{
@@ -66,16 +60,34 @@ describe('Авторизация',() =>{
         cy.get('.content > :nth-child(5)').should('contain',"Канбан")
         cy.get('.content > :nth-child(8)').should('contain',"Просмотр проекта")
         cy.get('.content > :nth-child(11)').should('contain',"Страница задачи")
+        cy.get('body').type('{esc}');
+        cy.url().should('eq', 'https://try.vikunja.io/')
     })
 
-    it('Переход к странице настроек',()=>{
+    it('Вывод модального окна "О Vikunja"',()=>{
         cy.get('#username').type('demo')
         cy.get('#password').type('demo')
         cy.get('.button').click()
         cy.url().should('eq', 'https://try.vikunja.io/')
         cy.get('.username').click({force:true})
-        cy.get('[href="/user/settings"] > span').click()
-        cy.url().should('eq', 'https://try.vikunja.io/user/settings/general')
-        cy.get('.card-header-title').should('contain', "Основные настройки")
+        cy.get('[href="/about"] > span').click({force:true})
+        cy.url().should('eq', 'https://try.vikunja.io/about')
+        cy.get('.card-header-title').should('contain',"О Vikunja")
+        cy.get('.p-4')
+            .should('contain', 'Версия фронтенда:')
+            .should('contain', 'Версия API:');
+        cy.get('footer.card-footer button.base-button').contains('Закрыть').click();
+        cy.url().should('eq', 'https://try.vikunja.io/')
     })
+
+    it('Успешный разлогин',()=>{
+        cy.get('#username').type('demo')
+        cy.get('#password').type('demo')
+        cy.get('.button').click()
+        cy.url().should('eq', 'https://try.vikunja.io/')
+        cy.get('.username').click({force:true})
+        cy.get(':nth-child(4) > span').click({force:true})
+        cy.url().should('eq', 'https://try.vikunja.io/login')
+    })
+
 })
