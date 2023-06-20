@@ -4,6 +4,6 @@
 ## Для запуска проекта выполнить команду
 ### `npx cypress open`
 ### В окне cypress выбрать E2E Testing
-### Выбрать предпочитаемый браузер и нажать кнопку: Start E2E Testing in <browser>
+### Выбрать предпочитаемый браузер и нажать кнопку: Start E2E Testing in (browser name)
 ### В открывшемся окне выбрать файл: login.cy.js
 
