@@ -27,5 +27,6 @@ const LoginPage = {
     getMainUrl () {
         return 'https://try.vikunja.io/'
     }
+
 }
 export default LoginPage
