@@ -1,9 +1,9 @@
 # cypress-19-06-23
 ## Для установки зависимостей выполнить команду 
-## `npm install`
+### `npm install`
 ## Для запуска проекта выполнить команду
-## `npx cypress open`
-## В окне cypress выбрать E2E Testing
-## Выбрать предпочитаемый браузер и нажать кнопку: Start E2E Testing in <browser>
-## В открывшемся окне выбрать файл: login.cy.js
+### `npx cypress open`
+### В окне cypress выбрать E2E Testing
+### Выбрать предпочитаемый браузер и нажать кнопку: Start E2E Testing in <browser>
+### В открывшемся окне выбрать файл: login.cy.js
 
