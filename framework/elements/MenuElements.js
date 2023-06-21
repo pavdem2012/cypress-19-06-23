@@ -1,4 +1,5 @@
 const MenuElements = {
+
     getRoot(){
         return cy.get('.menu-list')
     },
