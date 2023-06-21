@@ -1,4 +1,4 @@
-const MenuElements = {
+const MainMenuElements = {
 
     getRoot(){
         return cy.get('.menu-list')
@@ -10,4 +10,4 @@ const MenuElements = {
         return this.getRoot().get('.router-link-exact-active')
     }
 }
-export default MenuElements;
+export default MainMenuElements;

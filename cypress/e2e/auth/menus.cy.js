@@ -1,5 +1,5 @@
 import config from "../../../framework/config/config.js";
-import MenuElements from "../../../framework/elements/MenuElements.js";
+import MainMenuElements from "../../../framework/elements/MainMenuElements.js";
 import UserMenuElement from "../../../framework/elements/UserMenuElement";
 import settingsModalElements from "../../../framework/config/settingsModalElements";
 import mainMenuActions from "../../../framework/Actions/mainMenuActions";
@@ -60,31 +60,31 @@ import mainMenuActions from "../../../framework/Actions/mainMenuActions";
             mainMenuActions.getLoginSession()
         })
         it('Проверка активного элемента главного меню',() =>{
-            MenuElements.getActiveItem().contains(config.mainMenuItems.item1)
+            MainMenuElements.getActiveItem().contains(config.mainMenuItems.item1)
         })
         it('Проверка переходов по главному меню',()=>{
-            MenuElements.setItemByName(config.mainMenuItems.item1)
+            MainMenuElements.setItemByName(config.mainMenuItems.item1)
             cy.title().should('eq',config.titlesPages.title1)
             cy.url().should('eq', config.urls.mainPage)
-            MenuElements.getActiveItem().contains(config.mainMenuItems.item1)
-            MenuElements.setItemByName(config.mainMenuItems.item2)
+            MainMenuElements.getActiveItem().contains(config.mainMenuItems.item1)
+            MainMenuElements.setItemByName(config.mainMenuItems.item2)
             cy.title().should('contain','Задачи с')
                 .should('contain','по')
                 .should('contain','| Vikunja')
             cy.url().should('eq', config.urls.upcomingPage)
-            MenuElements.getActiveItem().contains(config.mainMenuItems.item2)
-            MenuElements.setItemByName(config.mainMenuItems.item3)
+            MainMenuElements.getActiveItem().contains(config.mainMenuItems.item2)
+            MainMenuElements.setItemByName(config.mainMenuItems.item3)
             cy.title().should('eq',config.titlesPages.title3)
             cy.url().should('eq', config.urls.projectsPage)
-            MenuElements.getActiveItem().contains(config.mainMenuItems.item3)
-            MenuElements.setItemByName(config.mainMenuItems.item4)
+            MainMenuElements.getActiveItem().contains(config.mainMenuItems.item3)
+            MainMenuElements.setItemByName(config.mainMenuItems.item4)
             cy.title().should('eq',config.titlesPages.title4)
             cy.url().should('eq', config.urls.labelsPage)
-            MenuElements.getActiveItem().contains(config.mainMenuItems.item4)
-            MenuElements.setItemByName(config.mainMenuItems.item5)
+            MainMenuElements.getActiveItem().contains(config.mainMenuItems.item4)
+            MainMenuElements.setItemByName(config.mainMenuItems.item5)
             cy.title().should('eq',config.titlesPages.title5)
             cy.url().should('eq', config.urls.teamsPage)
-            MenuElements.getActiveItem().contains(config.mainMenuItems.item5)
+            MainMenuElements.getActiveItem().contains(config.mainMenuItems.item5)
         })
     })
 })
