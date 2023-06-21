@@ -20,12 +20,6 @@ const LoginPage = {
         this.fillUsername(username)
         this.fillPassword(password)
         this.submitForm()
-    },
-    getLoginUrl () {
-        return 'https://try.vikunja.io/login'
-    },
-    getMainUrl () {
-        return 'https://try.vikunja.io/'
     }
 
 }
