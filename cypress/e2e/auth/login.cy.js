@@ -11,14 +11,14 @@ describe('Авторизация',() => {
     it('Нельзя авторизоваться без пароля', () => {
         LoginPage.fillUsername(config.credentials.user.username)
         LoginPage.submitForm()
-        LoginPage.getPasswordError().contains('Введите пароль')
+        LoginPage.getPasswordError().contains(config.loginPageErrors.passwordErr)
         cy.url().should('eq', config.urls.loginPage)
     })
 
     it('Нельзя авторизоваться без имени пользователя', () => {
         cy.get('#password').type(config.credentials.user.password)
         LoginPage.submitForm()
-        LoginPage.getPasswordError().contains('Введите имя пользователя')
+        LoginPage.getPasswordError().contains(config.loginPageErrors.usernameErr)
         cy.url().should('eq', config.urls.loginPage)
     })
 

@@ -3,7 +3,7 @@ const MenuElements = {
     getRoot(){
         return cy.get('.menu-list')
     },
-    setItemsByName(name){
+    setItemByName(name){
         this.getRoot().get('a').contains(name).click()
     },
     getActiveItem () {
