@@ -1,7 +1,7 @@
 import config from "../../../framework/config/config.js";
 import MenuElements from "../../../framework/elements/MenuElements.js";
 import UserMenuElement from "../../../framework/elements/UserMenuElement";
-import settingsPageElements from "../../../framework/config/settingsPageElements";
+import settingsModalElements from "../../../framework/config/settingsModalElements";
 import mainMenuActions from "../../../framework/Actions/mainMenuActions";
  describe ('Сквозные меню',() =>{
      describe('Меню пользователя',()=>{
@@ -14,23 +14,23 @@ import mainMenuActions from "../../../framework/Actions/mainMenuActions";
             UserMenuElement.clickItemByIndex(0)
             cy.url().should('eq', config.urls.settingsPage)
             UserMenuElement.setSettings('ru-RU')
-            cy.get(settingsPageElements.elements.header).should('contain', config.userMenuTitles.item1)
+            cy.get(settingsModalElements.elements.header).should('contain', config.userMenuTitles.item1)
         })
         it('Вывод модального окна "Сочетания клавиш"',()=>{
 
             cy.url().should('eq', config.urls.mainPage)
             UserMenuElement.clickItemByIndex(1)
             cy.url().should('eq', config.urls.mainPage)
-            cy.get(settingsPageElements.elements.header).should('contain',config.userMenuTitles.item2)
-            cy.get(settingsPageElements.elements.block1Select)
+            cy.get(settingsModalElements.elements.header).should('contain',config.userMenuTitles.item2)
+            cy.get(settingsModalElements.elements.block1Select)
                 .should('contain',config.userMenuTitles.subItems2.subItem1)
-            cy.get(settingsPageElements.elements.block2Select)
+            cy.get(settingsModalElements.elements.block2Select)
                 .should('contain',config.userMenuTitles.subItems2.subItem2)
-            cy.get(settingsPageElements.elements.block3Select)
+            cy.get(settingsModalElements.elements.block3Select)
                 .should('contain',config.userMenuTitles.subItems2.subItem3)
-            cy.get(settingsPageElements.elements.block4Select)
+            cy.get(settingsModalElements.elements.block4Select)
                 .should('contain',config.userMenuTitles.subItems2.subItem4)
-            cy.get(settingsPageElements.elements.block5Select)
+            cy.get(settingsModalElements.elements.block5Select)
                 .should('contain',config.userMenuTitles.subItems2.subItem5)
             UserMenuElement.closeSettings()
             cy.url().should('eq', config.urls.mainPage)
@@ -41,8 +41,8 @@ import mainMenuActions from "../../../framework/Actions/mainMenuActions";
             cy.url().should('eq', config.urls.mainPage)
             UserMenuElement.clickItemByIndex(2)
             cy.url().should('eq', config.urls.aboutPage)
-            cy.get(settingsPageElements.elements.header).should('contain',config.userMenuTitles.item3)
-            cy.get(settingsPageElements.elements.header4)
+            cy.get(settingsModalElements.elements.header).should('contain',config.userMenuTitles.item3)
+            cy.get(settingsModalElements.elements.header4)
                 .should('contain', config.userMenuTitles.subItems3.subItem1)
                 .should('contain', config.userMenuTitles.subItems3.subItem2);
             UserMenuElement.closeAbout()
