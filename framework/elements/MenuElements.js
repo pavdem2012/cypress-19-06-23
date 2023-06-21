@@ -3,8 +3,8 @@ const MenuElements = {
     getRoot(){
         return cy.get('.menu-list')
     },
-    getItemsByName(name){
-        this.getRoot().get('a').contains(name)
+    setItemsByName(name){
+        this.getRoot().get('a').contains(name).click()
     },
     getActiveItem () {
         return this.getRoot().get('.router-link-exact-active')
