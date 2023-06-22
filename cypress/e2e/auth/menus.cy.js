@@ -2,7 +2,7 @@ import config from "../../../framework/config/config.js";
 import MainMenuElements from "../../../framework/elements/MainMenuElements.js";
 import UserMenuElement from "../../../framework/elements/UserMenuElement";
 import settingsModalElements from "../../../framework/config/settingsModalElements";
-import mainMenuActions from "../../../framework/Actions/mainMenuActions";
+import mainMenuActions from "../../../framework/actions/mainMenuActions";
  describe ('Сквозные меню',() =>{
      describe('Меню пользователя',()=>{
         beforeEach(() =>{
