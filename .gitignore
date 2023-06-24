@@ -4,3 +4,5 @@ cypress/e2e/2-advanced-examples
 .idea
 .vscode
 cypress/videos
+cypress/downloads
+cypress/screenshots

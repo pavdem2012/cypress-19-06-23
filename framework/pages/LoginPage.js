@@ -6,6 +6,11 @@ const LoginPage = {
         cy.contains('Войти')
     },
 
+    getLoginSession(){
+        this.visit();
+        this.login(config.credentials.user)
+    },
+
     fillUsername(username){
         cy.get(Elements.userNameField).type(username)
     },
