@@ -16,7 +16,7 @@ describe('Авторизация',() => {
     })
 
     it('Нельзя авторизоваться без имени пользователя', () => {
-        cy.get('#password').type(config.credentials.user.password)
+        LoginPage.fillPassword(config.credentials.user.password)
         LoginPage.submitForm()
         LoginPage.getPasswordError().contains(config.loginPageErrors.usernameErr)
         cy.url().should('eq', config.urls.loginPage)
